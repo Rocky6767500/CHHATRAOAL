@@ -1,4 +1,4 @@
-// CHHATRAOAL - Futuristic Artist Portfolio
+// CHITRASEN - Futuristic Artist Portfolio
 // Motion-based interactive elements with psychological depth
 
 class ArtisticPortfolio {
@@ -9,16 +9,9 @@ class ArtisticPortfolio {
         this.backgroundCtx = null;
         this.particles = [];
         this.mousePosition = { x: 0, y: 0 };
+        // This array is no longer used to create items, but could be for future use.
         this.portfolioItems = [
-            { title: 'Cosmic Dreams', category: 'abstract', image: 'abstract1.jpg' },
-            { title: 'Urban Soul', category: 'portraits', image: 'portrait1.jpg' },
-            { title: 'Mountain Whispers', category: 'landscapes', image: 'landscape1.jpg' },
-            { title: 'Digital Realm', category: 'digital', image: 'digital1.jpg' },
-            { title: 'Human Essence', category: 'portraits', image: 'portrait2.jpg' },
-            { title: 'Abstract Flow', category: 'abstract', image: 'abstract2.jpg' },
-            { title: 'Ocean Dreams', category: 'landscapes', image: 'landscape2.jpg' },
-            { title: 'Cyber Art', category: 'digital', image: 'digital2.jpg' },
-            { title: 'Inner Light', category: 'portraits', image: 'portrait3.jpg' }
+            // { title: 'Cosmic Dreams', category: 'abstract', image: 'abstract1.jpg' },
         ];
         
         this.init();
@@ -27,7 +20,9 @@ class ArtisticPortfolio {
     init() {
         this.setupEventListeners();
         this.initBackgroundCanvas();
-        this.createPortfolioItems();
+        // createPortfolioItems() is removed to prevent creating empty items.
+        // We now call setupPortfolioFilter directly.
+        this.setupPortfolioFilter(); 
         this.setupCustomCursor();
         this.startLoadingSequence();
         this.initSectionSwitching();
@@ -297,85 +292,6 @@ class ArtisticPortfolio {
         }
     }
 
-    // Portfolio Section with Dynamic Item Generation
-    createPortfolioItems() {
-        const grid = document.querySelector('.portfolio-grid');
-        
-        this.portfolioItems.forEach((item, index) => {
-            const portfolioItem = document.createElement('div');
-            portfolioItem.className = 'portfolio-item';
-            portfolioItem.setAttribute('data-category', item.category);
-            
-            portfolioItem.innerHTML = `
-                <div class="portfolio-image">
-                    <div class="image-overlay"></div>
-                </div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">${item.title}</h3>
-                    <span class="portfolio-category">${item.category}</span>
-                </div>
-            `;
-            
-            // Add hover effects
-            portfolioItem.addEventListener('mouseenter', () => {
-                this.animatePortfolioHover(portfolioItem, true);
-            });
-            
-            portfolioItem.addEventListener('mouseleave', () => {
-                this.animatePortfolioHover(portfolioItem, false);
-            });
-            
-            grid.appendChild(portfolioItem);
-        });
-        
-        // Setup category filtering
-        this.setupPortfolioFilter();
-    }
-
-    animatePortfolioHover(item, isHover) {
-        const image = item.querySelector('.portfolio-image');
-        
-        if (isHover) {
-            // Create ripple effect
-            const ripple = document.createElement('div');
-            ripple.className = 'hover-ripple';
-            ripple.style.cssText = `
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 0;
-                height: 0;
-                background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                animation: rippleExpand 0.6s ease-out forwards;
-                pointer-events: none;
-            `;
-            
-            image.appendChild(ripple);
-            
-            // Remove ripple after animation
-            setTimeout(() => {
-                if (ripple.parentNode) {
-                    ripple.parentNode.removeChild(ripple);
-                }
-            }, 600);
-        }
-        
-        // Add CSS for ripple animation
-        if (!document.querySelector('#ripple-styles')) {
-            const style = document.createElement('style');
-            style.id = 'ripple-styles';
-            style.textContent = `
-                @keyframes rippleExpand {
-                    0% { width: 0; height: 0; opacity: 1; }
-                    100% { width: 200px; height: 200px; opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-    }
-
     setupPortfolioFilter() {
         const categoryButtons = document.querySelectorAll('.category-btn');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -393,18 +309,23 @@ class ArtisticPortfolio {
                     const itemCategory = item.getAttribute('data-category');
                     const shouldShow = category === 'all' || itemCategory === category;
                     
+                    // Use a small delay for staggering the animation
+                    const delay = index * 50;
+
                     if (shouldShow) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
+                        item.style.transition = `opacity 0.4s ease ${delay}ms, transform 0.4s ease ${delay}ms`;
+                        item.style.display = 'block'; // Or 'flex', 'grid' etc. depending on your layout
+                        setTimeout(() => { // Use timeout to apply class after display is set
                             item.style.opacity = '1';
                             item.style.transform = 'scale(1) translateY(0)';
-                        }, index * 100);
+                        }, 20);
                     } else {
+                        item.style.transition = `opacity 0.4s ease ${delay}ms, transform 0.4s ease ${delay}ms`;
                         item.style.opacity = '0';
                         item.style.transform = 'scale(0.8) translateY(20px)';
                         setTimeout(() => {
                             item.style.display = 'none';
-                        }, 300);
+                        }, 400 + delay); // Hide after animation
                     }
                 });
             });
