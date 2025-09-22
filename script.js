@@ -1,9 +1,8 @@
-// --- TEMPLATE V2.2 SCRIPT ---
+// --- TEMPLATE V2.3 SCRIPT ---
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Animated Starry Background ---
-    // (This part remains the same)
     const starContainer = document.getElementById('background-animation');
     if (starContainer) {
         const starCount = 150;
@@ -19,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = Math.random() * 100;
             star.style.left = `${x}%`;
             star.style.top = `${y}%`;
+            // Add a random delay to the animation for each star
+            star.style.animationDelay = `${Math.random() * 5}s`;
             const z = Math.random() * 3 + 1;
             star.dataset.depth = z;
             starContainer.appendChild(star);
@@ -36,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Smooth Scrolling for Nav Links ---
-    // (This part remains the same)
     document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Fade-in elements on scroll ---
-    // (This part remains the same)
     const sectionsToObserve = document.querySelectorAll('.content-section');
     if (sectionsToObserve.length > 0) {
         const observer = new IntersectionObserver((entries) => {
@@ -64,28 +63,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NEW: 3D Tilt Effect for Welcome Text ---
+    // --- UPDATED: 3D Tilt Effect for Welcome Text ---
     const welcomeText = document.querySelector('.welcome-content h1');
     if (welcomeText) {
         const welcomeSection = document.querySelector('.welcome-section');
+        
+        // On mouse move, stop the CSS animation and apply JS-based transform
         welcomeSection.addEventListener('mousemove', (e) => {
+            // Pause the CSS animation
+            welcomeText.style.animationPlayState = 'paused';
+
             const { clientX, clientY } = e;
             const { offsetWidth, offsetHeight } = welcomeSection;
-
-            // Calculate mouse position from -1 to 1
             const x = (clientX / offsetWidth - 0.5) * 2;
             const y = (clientY / offsetHeight - 0.5) * 2;
-
-            // Define the intensity of the tilt
             const tiltIntensity = 8;
-
-            // Apply the 3D transform
-            welcomeText.style.transform = `rotateY(${x * tiltIntensity}deg) rotateX(${-y * tiltIntensity}deg)`;
+            
+            // Apply the 3D transform from mouse
+            welcomeText.style.transform = `translateY(-7.5px) rotateY(${x * tiltIntensity}deg) rotateX(${-y * tiltIntensity}deg)`;
         });
 
-        // Reset transform when mouse leaves the section
+        // On mouse leave, resume the CSS animation
         welcomeSection.addEventListener('mouseleave', () => {
-             welcomeText.style.transform = `rotateY(0deg) rotateX(0deg)`;
+             // Resume the CSS animation
+             welcomeText.style.animationPlayState = 'running';
+             // Remove the JS-based transform so the CSS animation can take over
+             welcomeText.style.transform = '';
         });
     }
 });
