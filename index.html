@@ -3,148 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHITRASEN - Artist Portfolio</title>
-    <link rel="stylesheet" href="styles.css?v=1.3">
+    <title>CHITRASEN - The Artist's World</title>
+    <!-- v=2.0 helps browser load the new file -->
+    <link rel="stylesheet" href="styles.css?v=2.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cinzel:wght@400;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cinzel+Decorative:wght@700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Dynamic Background Canvas -->
-    <canvas id="background-canvas"></canvas>
-    
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-brand">
-            <span class="brand-text">CHITRASEN</span>
-        </div>
-        <ul class="nav-menu">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Animated Background -->
+    <div id="background-animation"></div>
 
-    <!-- Main Container -->
-    <main class="main-container">
-        <!-- New Homepage Section (Landing Page) -->
-        <section id="home" class="section home-section active">
-             <div class="landing-container">
-                <div class="artist-portrait-landing">
-                    <div class="portrait-frame"></div>
-                    <div class="portrait-glow"></div>
-                </div>
-                <h1 class="landing-title">CHITRASEN</h1>
-                <p class="landing-subtitle">Digital & Traditional Artist</p>
-                <div class="social-links-landing">
-                    <a href="#" class="social-link" data-platform="email"><div class="social-icon">📧</div></a>
-                    <a href="#" class="social-link" data-platform="instagram"><div class="social-icon">📷</div></a>
-                    <a href="#" class="social-link" data-platform="behance"><div class="social-icon">🎨</div></a>
-                    <a href="#" class="social-link" data-platform="twitter"><div class="social-icon">🐦</div></a>
-                </div>
-                <div class="about-text-landing">
-                    <p>I am an artist who believes that art should breathe, move, and evolve. Welcome to my world of motion and meaning.</p>
-                </div>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="artist-logo">CHITRASEN</div>
+        <nav class="main-nav">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1: Welcome Screen -->
+        <section id="home" class="welcome-section">
+            <div class="welcome-content">
+                <h1>
+                    <span>WELCOME</span>
+                    <span>TO</span>
+                    <span>MY</span>
+                    <span>WORLD</span>
+                </h1>
+            </div>
+            <div class="scroll-indicator">
+                <span>SCROLL DOWN</span>
+                <div class="indicator-arrow">↓</div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="section portfolio-section">
-            <div class="section-header">
-                <h2 class="section-title">Portfolio</h2>
-                <p class="section-subtitle">A collection of living artworks</p>
-            </div>
-            
-            <div class="portfolio-categories">
-                <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="portraits">Portraits</button>
-                <button class="category-btn" data-category="landscapes">Landscapes</button>
-                <button class="category-btn" data-category="abstract">Abstract</button>
-                <button class="category-btn" data-category="digital">Digital</button>
-            </div>
-
+        <!-- Section 2: Portfolio -->
+        <section id="portfolio" class="content-section">
+            <h2 class="section-title">PORTFOLIO</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="digital">
-                    <div class="portfolio-image"><img src="20250921_113156.jpg" alt="Artwork 1"></div>
-                    <div class="portfolio-content"><h3 class="portfolio-title">Cosmic Bloom</h3></div>
-                </div>
-                <div class="portfolio-item" data-category="portraits">
-                    <div class="portfolio-image"><img src="20250921_113623.jpg" alt="Artwork 2"></div>
-                     <div class="portfolio-content"><h3 class="portfolio-title">Celestial Gaze</h3></div>
-                </div>
-                <div class="portfolio-item" data-category="abstract">
-                    <div class="portfolio-image"><img src="20250921_113749.jpg" alt="Artwork 3"></div>
-                     <div class="portfolio-content"><h3 class="portfolio-title">Liquid Dreams</h3></div>
-                </div>
-                <div class="portfolio-item" data-category="digital">
-                    <div class="portfolio-image"><img src="20250921_113830.jpg" alt="Artwork 4"></div>
-                     <div class="portfolio-content"><h3 class="portfolio-title">Future's Past</h3></div>
-                </div>
-                <div class="portfolio-item" data-category="landscapes">
-                    <div class="portfolio-image"><img src="20250921_114202.jpg" alt="Artwork 5"></div>
-                     <div class="portfolio-content"><h3 class="portfolio-title">Neon Valley</h3></div>
-                </div>
-                <div class="portfolio-item" data-category="abstract">
-                    <div class="portfolio-image"><img src="IMG-20241107-WA0028(1).jpg" alt="Artwork 6"></div>
-                     <div class="portfolio-content"><h3 class="portfolio-title">Chroma Flow</h3></div>
-                </div>
+                <!-- Your 6 Images -->
+                <div class="portfolio-item"><img src="20250921_113156.jpg" alt="Artwork 1"></div>
+                <div class="portfolio-item"><img src="20250921_113623.jpg" alt="Artwork 2"></div>
+                <div class="portfolio-item"><img src="20250921_113749.jpg" alt="Artwork 3"></div>
+                <div class="portfolio-item"><img src="20250921_113830.jpg" alt="Artwork 4"></div>
+                <div class="portfolio-item"><img src="20250921_114202.jpg" alt="Artwork 5"></div>
+                <div class="portfolio-item"><img src="IMG-20241107-WA0028(1).jpg" alt="Artwork 6"></div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section about-section">
+        <!-- Section 3: About & Social Links -->
+        <section id="about" class="content-section about-section">
             <div class="about-container">
-                <div class="about-visual">
-                    <div class="artist-portrait"><div class="portrait-frame"></div><div class="portrait-glow"></div></div>
+                <div class="about-image">
+                    <img src="20250921_113623.jpg" alt="Artist Portrait">
                 </div>
                 <div class="about-content">
-                    <h2 class="about-title"><span class="title-line">The</span><span class="title-line">Artist</span><span class="title-line">Behind</span><span class="title-line">The Vision</span></h2>
-                    <div class="about-text">
-                        <p class="about-paragraph">I am a digital artist who believes that art should breathe, move, and evolve. My work explores the intersection of technology and human emotion, creating pieces that live beyond the static frame.</p>
-                        <p class="about-paragraph">Each creation is a journey into the depths of imagination, where colors dance with light and forms flow like liquid dreams. Welcome to my world of motion and meaning.</p>
-                    </div>
-                    <div class="skills-constellation">
-                        <div class="skill-orb" data-skill="Digital Art">DA</div><div class="skill-orb" data-skill="Motion Graphics">MG</div><div class="skill-orb" data-skill="3D Modeling">3D</div><div class="skill-orb" data-skill="Animation">AN</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="contact-container">
-                <h2 class="contact-title">Let's Create Together</h2>
-                <p class="contact-subtitle">Reach out and let's bring your vision to life</p>
-                <div class="contact-content">
-                    <div class="contact-form-container">
-                        <form class="contact-form" id="contactForm">
-                            <div class="form-group"><input type="text" id="name" required><label for="name">Your Name</label><div class="input-animation"></div></div>
-                            <div class="form-group"><input type="email" id="email" required><label for="email">Your Email</label><div class="input-animation"></div></div>
-                            <div class="form-group"><textarea id="message" required></textarea><label for="message">Your Message</label><div class="input-animation"></div></div>
-                            <button type="submit" class="submit-btn"><span>Send Message</span><div class="btn-particles"></div></button>
-                        </form>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link" data-platform="email"><div class="social-icon">📧</div><span>Email</span></a>
-                        <a href="#" class="social-link" data-platform="instagram"><div class="social-icon">📷</div><span>Instagram</span></a>
-                        <a href="#" class="social-link" data-platform="behance"><div class="social-icon">🎨</div><span>Behance</span></a>
-                        <a href="#" class="social-link" data-platform="twitter"><div class="social-icon">🐦</div><span>Twitter</span></a>
+                    <h2 class="section-title">ABOUT THE ARTIST</h2>
+                    <p class="about-text">
+                        I am a visual artist exploring the realms of imagination through digital and traditional mediums. My work is a journey into the depths of emotion, where colors dance with light and forms flow like liquid dreams. This is my world, welcome.
+                    </p>
+                    <div class="social-links-container">
+                        <h3>CONNECT WITH ME</h3>
+                        <div class="social-links">
+                            <a href="#" title="Instagram">📷</a>
+                            <a href="#" title="Behance">🎨</a>
+                            <a href="#" title="Twitter / X">🐦</a>
+                            <a href="#" title="Email">📧</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-logo">CHITRASEN</div>
-            <div class="loading-bar"><div class="loading-progress"></div></div>
-            <div class="loading-text">Initializing creative universe...</div>
-        </div>
-    </div>
-
-    <script src="script.js?v=1.3"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>
