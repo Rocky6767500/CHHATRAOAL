@@ -1,11 +1,11 @@
-// --- NEW TEMPLATE V2.0 SCRIPT ---
+// --- NEW TEMPLATE V2.1 SCRIPT ---
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Animated Starry Background ---
     const starContainer = document.getElementById('background-animation');
     if (starContainer) {
-        const starCount = 150; // Number of stars
+        const starCount = 150;
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.style.position = 'absolute';
@@ -21,14 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
             star.style.left = `${x}%`;
             star.style.top = `${y}%`;
 
-            // For parallax effect
-            const z = Math.random() * 3 + 1; // z-index simulation
+            const z = Math.random() * 3 + 1;
             star.dataset.depth = z;
 
             starContainer.appendChild(star);
         }
 
-        // Parallax scroll effect for stars
         window.addEventListener('scroll', () => {
             const top = window.scrollY;
             const stars = starContainer.children;
@@ -42,36 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Smooth Scrolling for Nav Links ---
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
+    document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            const targetElement = document.querySelector(link.getAttribute('href'));
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
 
     // --- Fade-in elements on scroll ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+    const sectionsToObserve = document.querySelectorAll('.content-section');
+    if (sectionsToObserve.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-    document.querySelectorAll('.content-section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        observer.observe(section);
-    });
+        sectionsToObserve.forEach(section => {
+            observer.observe(section);
+        });
+    }
 });
