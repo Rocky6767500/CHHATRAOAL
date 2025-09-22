@@ -259,27 +259,41 @@ class ArtisticPortfolio {
 
     switchToSection(sectionName) {
         const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
-        
         const targetSection = document.getElementById(sectionName);
+        
         if (targetSection) {
+            // Hide all sections first
+            sections.forEach(section => {
+                section.style.display = 'none';
+                section.style.opacity = '0';
+                section.classList.remove('active');
+            });
+            
+            // Show target section with fade-in effect
+            targetSection.style.display = sectionName === 'home' ? 'flex' : 'block';
             targetSection.classList.add('active');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                targetSection.style.opacity = '1';
+            }, 50);
+            
             this.currentSection = sectionName;
             
             // Trigger section-specific animations
-            switch(sectionName) {
-                case 'portfolio':
-                    this.animatePortfolioItems();
-                    break;
-                case 'about':
-                    this.animateAboutSection();
-                    break;
-                case 'contact':
-                    this.animateContactSection();
-                    break;
-            }
+            setTimeout(() => {
+                switch(sectionName) {
+                    case 'portfolio':
+                        this.animatePortfolioItems();
+                        break;
+                    case 'about':
+                        this.animateAboutSection();
+                        break;
+                    case 'contact':
+                        this.animateContactSection();
+                        break;
+                }
+            }, 300);
         }
     }
 
