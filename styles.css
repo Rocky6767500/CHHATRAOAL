@@ -504,20 +504,19 @@ body::before {
   margin: 0 auto;
 }
 
-/* === IMAGE FIX STARTS HERE === */
+/* === PORTFOLIO ITEM FIX STARTS HERE === */
 .portfolio-item {
   position: relative;
-  aspect-ratio: 1 / 1; /* Makes the container a square. Change if you want a different ratio e.g., 16/9 */
-  background: var(--neutral-medium); /* Background for empty space */
+  background: var(--neutral-medium);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 215, 0, 0.1);
   transition: all var(--transition-medium);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; /* Changed */
+  flex-direction: column; /* Added */
+  align-items: center; /* Changed */
+  justify-content: flex-start; /* Changed */
 }
 
 .portfolio-item:hover {
@@ -526,17 +525,40 @@ body::before {
   border-color: var(--gold-primary);
 }
 
-.portfolio-item img {
+.portfolio-image {
+  width: 100%;
+  height: 250px; /* Or use aspect-ratio */
+  background: var(--neutral-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.portfolio-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* This will show the full image */
+  object-fit: contain; /* Shows the full image */
   transition: transform 0.3s ease;
 }
 
-.portfolio-item:hover img {
-    transform: scale(1.05); /* Optional: slight zoom on hover */
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.05);
 }
-/* === IMAGE FIX ENDS HERE === */
+
+.portfolio-content {
+  padding: 1.5rem;
+  text-align: center; /* Center the title */
+  width: 100%;
+}
+
+.portfolio-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+/* === PORTFOLIO ITEM FIX ENDS HERE === */
+
 
 /* About Section */
 .about-section {
