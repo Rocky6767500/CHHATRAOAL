@@ -1,4 +1,4 @@
-/* --- NEW TEMPLATE V2.1 STYLES --- */
+/* --- TEMPLATE V2.2 STYLES --- */
 
 :root {
     --bg-color: #0c0a14;
@@ -72,12 +72,18 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    /* Added for 3D effect */
+    perspective: 1000px;
 }
 .welcome-content h1 {
     font-family: var(--font-title);
-    font-size: clamp(3rem, 10vw, 7rem);
+    /* Size Reduced */
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
     color: #fff;
     line-height: 1.1;
+    /* Added for smooth 3D motion */
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
 }
 .welcome-content h1 span {
     display: inline-block;
@@ -115,10 +121,7 @@ body {
     transform: translateY(50px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.content-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.content-section.is-visible { opacity: 1; transform: translateY(0); }
 .section-title {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 6vw, 3.5rem);
