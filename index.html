@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHITRASEN - The Artist's World</title>
-    <!-- v=3.0 for the new Professional look -->
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <!-- v4.0 for the new Floating Images feature -->
+    <link rel="stylesheet" href="styles.css?v=4.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cinzel+Decorative:wght@700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
@@ -26,6 +26,12 @@
     <main>
         <!-- Section 1: Welcome Screen -->
         <section id="home" class="welcome-section">
+            <!-- NEW: Floating images container -->
+            <div class="floating-images">
+                <img src="20250921_113156.jpg" alt="Floating Artwork 1" class="float-img-1">
+                <img src="20250921_113749.jpg" alt="Floating Artwork 2" class="float-img-2">
+                <img src="IMG-20241107-WA0028(1).jpg" alt="Floating Artwork 3" class="float-img-3">
+            </div>
             <div class="welcome-content">
                 <h1>
                     <span>WELCOME</span>
@@ -44,30 +50,30 @@
         <section id="portfolio" class="content-section">
             <h2 class="section-title">PORTFOLIO</h2>
             <div class="portfolio-grid">
-                <!-- Portfolio items now include an overlay and icon for the new hover effect -->
+                <!-- Eye icon has been removed from here -->
                 <div class="portfolio-item">
                     <img src="20250921_113156.jpg" alt="Artwork 1">
-                    <div class="overlay"><div class="view-icon">👁</div></div>
+                    <div class="overlay"></div>
                 </div>
                 <div class="portfolio-item">
                     <img src="20250921_113623.jpg" alt="Artwork 2">
-                    <div class="overlay"><div class="view-icon">👁</div></div>
+                    <div class="overlay"></div>
                 </div>
                 <div class="portfolio-item">
                     <img src="20250921_113749.jpg" alt="Artwork 3">
-                    <div class="overlay"><div class="view-icon">👁</div></div>
+                    <div class="overlay"></div>
                 </div>
                 <div class="portfolio-item">
                     <img src="20250921_113830.jpg" alt="Artwork 4">
-                    <div class="overlay"><div class="view-icon">👁</div></div>
+                    <div class="overlay"></div>
                 </div>
                 <div class="portfolio-item">
                     <img src="20250921_114202.jpg" alt="Artwork 5">
-                    <div class="overlay"><div class="view-icon">👁</div></div>
+                    <div class="overlay"></div>
                 </div>
                 <div class="portfolio-item">
                     <img src="IMG-20241107-WA0028(1).jpg" alt="Artwork 6">
-                    <div class="overlay"><div class="view-icon">👁</div></div>
+                    <div class="overlay"></div>
                 </div>
             </div>
         </section>
@@ -86,7 +92,12 @@
                     <div class="social-links-container">
                         <h3>CONNECT WITH ME</h3>
                         <div class="social-links">
-                            <a href="https://www.instagram.com/chitrasen.art_gallery?igsh=MTRweWlldXpoemhwNQ==" title="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+                            <!-- UPDATED: Real Instagram SVG Icon -->
+                            <a href="https://www.instagram.com/chitrasen.art_gallery?igsh=MTRweWlldXpoemhwNQ==" title="Instagram" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" class="social-icon">
+                                    <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                                </svg>
+                            </a>
                             <a href="mailto:sahuraju45870@gmail.com" title="Email">📧</a>
                         </div>
                     </div>
@@ -95,6 +106,6 @@
         </section>
     </main>
 
-    <script src="script.js?v=3.0"></script>
+    <script src="script.js?v=4.0"></script>
 </body>
 </html>
