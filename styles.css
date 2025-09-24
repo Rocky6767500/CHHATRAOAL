@@ -1,4 +1,4 @@
-/* --- TEMPLATE V5.0 STYLES (Fullscreen Gallery & Shadow) --- */
+/* --- TEMPLATE V5.1 STYLES (Final Check & Polish) --- */
 
 :root {
     --bg-color: #0a0a12;
@@ -13,7 +13,6 @@
     --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- Basic Setup --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -23,15 +22,12 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Animated Background --- */
 #background-animation {
     position: fixed; top: 0; left: 0;
     width: 100%; height: 100%; z-index: -1;
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    overflow: hidden;
 }
 
-/* --- Header Navigation --- */
 .main-header {
     position: fixed; top: 0; left: 0; width: 100%;
     padding: 1.5rem 3rem; display: flex;
@@ -41,23 +37,21 @@ body {
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
+.artist-logo { font-family: var(--font-title); font-size: 1.8rem; color: var(--primary-glow); text-shadow: 0 0 12px var(--primary-glow); }
+.main-nav a { color: var(--text-color); text-decoration: none; font-family: var(--font-heading); margin-left: 2.5rem; }
+.main-nav a:hover { color: var(--primary-glow); }
 
-/* --- Welcome Section --- */
 .welcome-section {
     height: 100vh; display: flex;
     justify-content: center; align-items: center;
-    perspective: 1200px; /* Increased perspective for better 3D */
-    position: relative; 
-    overflow: hidden;
-    z-index: 1;
+    perspective: 1200px;
+    position: relative; overflow: hidden; z-index: 1;
 }
 
-/* --- Floating Images in Welcome Section --- */
 .floating-images {
-    position: absolute;
-    top: 0; left: 0;
+    position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-    transform-style: preserve-3d; /* Enable 3D space */
+    transform-style: preserve-3d;
     z-index: 5;
 }
 .floating-images img {
@@ -66,10 +60,8 @@ body {
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     opacity: 0.8;
     border: 1px solid rgba(255,255,255,0.1);
-    will-change: transform; /* Performance optimization */
+    will-change: transform;
 }
-
-/* Positions and animations for all 6 images */
 .float-img-1 { width: 25vw; max-width: 300px; top: 10%; left: 5%; animation: float1 28s infinite ease-in-out; }
 .float-img-2 { width: 18vw; max-width: 220px; top: 65%; left: 15%; animation: float2 22s infinite ease-in-out; }
 .float-img-3 { width: 15vw; max-width: 180px; top: 5%; right: 8%; animation: float3 35s infinite ease-in-out; }
@@ -77,7 +69,6 @@ body {
 .float-img-5 { width: 12vw; max-width: 150px; top: 30%; left: 30%; animation: float5 32s infinite ease-in-out; }
 .float-img-6 { width: 16vw; max-width: 200px; top: 40%; right: 35%; animation: float6 20s infinite ease-in-out; }
 
-/* Keyframes for floating animations */
 @keyframes float1 { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(60px, -80px, 50px) rotate(10deg); } }
 @keyframes float2 { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(-70px, 50px, -40px) rotate(-15deg); } }
 @keyframes float3 { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(50px, -60px, 20px) rotate(8deg); } }
@@ -90,34 +81,31 @@ body {
     font-family: var(--font-heading); letter-spacing: 1px;
     opacity: 0; animation: fadeIn 2s forwards 2.5s;
 }
+.indicator-arrow { animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @keyframes fadeIn { to { opacity: 0.7; } }
 
-/* --- Content Sections --- */
 .content-section {
     padding: 8rem 3rem 4rem; max-width: 1400px; margin: 0 auto;
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
     background-color: var(--bg-color); 
 }
 .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem);
     text-align: center; margin-bottom: 4rem; letter-spacing: 2px;
     background: linear-gradient(90deg, var(--secondary-glow), var(--primary-glow));
     -webkit-background-clip: text; background-clip: text; color: transparent;
     filter: drop-shadow(0 0 10px rgba(255, 195, 0, 0.2));
 }
 
-/* --- Portfolio Grid --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem; /* Increased gap for shadow */
+    gap: 2.5rem;
 }
 .portfolio-item {
     border-radius: 8px; overflow: hidden; position: relative;
     transition: var(--transition-smooth);
-    /* NEW: Added default shadow */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 .portfolio-item img {
@@ -126,46 +114,40 @@ body {
     transition: var(--transition-smooth);
 }
 .portfolio-item .overlay {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    opacity: 0;
-    transition: var(--transition-smooth);
+    opacity: 0; transition: var(--transition-smooth);
 }
 .portfolio-item:hover {
-    /* Enhanced hover shadow */
     box-shadow: 0 0 35px var(--border-color);
     transform: translateY(-10px) scale(1.02);
 }
 .portfolio-item:hover img { transform: scale(1.1); }
 .portfolio-item:hover .overlay { opacity: 1; }
 
-/* --- About Section --- */
-.about-container {
-    display: grid; grid-template-columns: 1fr 2fr;
-    align-items: center; gap: 4rem;
-}
-.about-image {
-    border-radius: 50%; overflow: hidden;
-    width: 280px; height: 280px;
-    border: 5px solid var(--primary-glow);
-    box-shadow: 0 0 30px var(--primary-glow);
-    justify-self: center;
-}
-.social-links a .social-icon { 
-    width: 32px; height: 32px;
-    fill: currentColor;
-}
+.about-container { display: grid; grid-template-columns: 1fr 2fr; align-items: center; gap: 4rem; }
+.about-image { border-radius: 50%; overflow: hidden; width: 280px; height: 280px; border: 5px solid var(--primary-glow); box-shadow: 0 0 30px var(--primary-glow); justify-self: center; }
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-content .section-title { text-align: left; margin-bottom: 2rem; }
+.about-text { font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); max-width: 650px; margin-bottom: 2.5rem; }
+.social-links-container h3 { font-family: var(--font-heading); color: var(--secondary-glow); margin-bottom: 1rem; }
+.social-links { display: flex; align-items: center; gap: 2rem; }
+.social-links a { color: var(--text-muted); text-decoration: none; display: flex; transition: var(--transition-smooth); }
+.social-links a .social-icon { width: 32px; height: 32px; fill: currentColor; }
+.social-links a:hover { color: var(--secondary-glow); transform: scale(1.2) translateY(-5px); }
+.social-links a[title="Email"] { font-size: 2.5rem; }
 
-/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    .about-container { grid-template-columns: 1fr; text-align: center; }
+    .about-image { margin-bottom: 2rem; width: 220px; height: 220px; }
+    .about-content .section-title { text-align: center; }
+}
 @media (max-width: 768px) {
     .main-header { padding: 1rem; }
     .content-section { padding: 6rem 1.5rem 3rem; }
-    /* Adjust floating images for smaller screens */
     .float-img-1 { width: 35vw; }
     .float-img-2 { width: 28vw; top: 70%; left: 5%;}
     .float-img-3 { width: 25vw; top: 10%; right: 5%;}
-    .float-img-4 { display: none; } /* Hide some images */
+    .float-img-4, .float-img-6 { display: none; }
     .float-img-5 { width: 22vw; top: 40%; left: 20%;}
-    .float-img-6 { display: none; } /* Hide some images */
 }
